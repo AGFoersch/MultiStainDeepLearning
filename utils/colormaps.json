@@ -1,0 +1,58 @@
+{
+  "zissou1": {
+    "type": "LinearSegmentedColormap.from_list",
+    "args": {
+      "colors": ["#3B9AB2", "#78B7C5", "#EBCC2A", "#E1AF00", "#F21A00"]
+    },
+    "source": "https://github.com/ljwolf/wampl/blob/master/wes/colors.json"
+  },
+
+  "from_dict_with_anchors": {
+    "type": "LinearSegmentedColormap",
+    "args": {
+      "segmentdata": {
+        "red": [
+          [0.0,  0.0, 0.0],
+          [0.5,  1.0, 1.0],
+          [1.0,  1.0, 1.0]
+        ],
+        "green": [
+          [0.0,  0.0, 0.0],
+          [0.25, 0.0, 0.0],
+          [0.75, 1.0, 1.0],
+          [1.0,  1.0, 1.0]
+        ],
+        "blue": [
+          [0.0,  0.0, 0.0],
+          [0.5,  0.0, 0.0],
+          [1.0,  1.0, 1.0]
+        ]
+      }
+    },
+    "usage": "https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.LinearSegmentedColormap.html"
+  },
+
+  "interpolate_from_list_equidistant": {
+    "type": "LinearSegmentedColormap.from_list",
+    "args": {
+      "colors": [[1,0,0], [0,1,0], [0,0,1]]
+    },
+    "usage": "https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.LinearSegmentedColormap.html#matplotlib.colors.LinearSegmentedColormap.from_list"
+  },
+
+  "interpolate_from_list_custom_positions": {
+    "type": "LinearSegmentedColormap.from_list",
+    "args": {
+      "colors": [[0, [1,0,0]], [0.2, [0,1,0]], [1, [0,0,1]]]
+    },
+    "usage": "https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.LinearSegmentedColormap.html#matplotlib.colors.LinearSegmentedColormap.from_list"
+  },
+
+  "from_list": {
+    "type": "ListedColormap",
+    "args": {
+      "colors": [[1,0,0], [0,1,0], [0,0,1]]
+    },
+    "usage": "https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.ListedColormap.html#matplotlib.colors.ListedColormap"
+  }
+}
