@@ -1,0 +1,12 @@
+numpy==1.18.1
+torch==1.9.0
+torchvision==0.10.0
+lifelines==0.25.7
+tqdm==4.64.0
+scikit-learn==0.24.2
+matplotlib==3.3.4
+pandas==0.24.2
+protobuf==3.11.3
+tensorboard==2.1.0
+Pillow==7.1.2
+captum==0.4.0
