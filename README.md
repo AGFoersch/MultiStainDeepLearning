@@ -18,7 +18,7 @@ This project requires Python 3 (3.6.9) with the following additional packages:
 
 The numbers in parentheses denote the versions used during development of this project. Other python and package versions may or may not work as intended.
 
-[//]: # (A requirements file is provided in the root of this project and can be used to install the required packages via `pip install -r /path/to/requirements.txt`. If the process fails, you may need to upgrade setuptools via `pip install --upgrade setuptools`.)
+A requirements file is provided in the root of this project and can be used to install the required packages via `pip install -r /path/to/requirements.txt`. If the process fails, you may need to upgrade setuptools via `pip install --upgrade setuptools`.
 
 ### General usage
 Using a preexisting configuration .json file, start training via `python train.py -c path/to/your_config.json`. Any resulting training logs and model checkpoints will be placed in a timestamped folder at the location specified in the config file (this location does not need to exist yet).
