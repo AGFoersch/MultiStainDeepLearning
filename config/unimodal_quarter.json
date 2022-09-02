@@ -1,0 +1,88 @@
+{
+    "name": "unimodal_quarter",
+    "n_gpu": 1,
+    "arch": {
+        "type": "MultiModel",
+        "args": {
+            "num_classes": 2,
+            "lo_dims": [
+                32
+            ],
+            "mmhid": 64,
+            "dropout_rate": 0.3,
+            "genomic": false
+        }
+    },
+    "data_loader": {
+        "type": "BasicMixDataLoader",
+        "args": {
+            "data_root": "./data",
+            "dataframes": [
+                "./config/csv/quarter_crop_train.csv"
+            ],
+            "labels": [
+                "Tumor_Label"
+            ],
+            "dataframe_valid": "./config/csv/quarter_crop_val.csv",
+            "valid_columns": [
+                "Path"
+            ],
+            "shuffle": true,
+            "num_workers": 8,
+            "batch_size": 64
+        }
+    },
+    "transformations": {
+        "type": "ImageAugmentation",
+        "args": {
+            "size": 224,
+            "normalization": [
+                [
+                    0.485,
+                    0.456,
+                    0.406
+                ],
+                [
+                    0.229,
+                    0.224,
+                    0.225
+                ]
+            ]
+        }
+    },
+    "optimizer": {
+        "type": "Adam",
+        "args": {
+            "lr": 3e-06
+        }
+    },
+    "loss": {
+        "type": "CrossEntropyLoss",
+        "args": {}
+    },
+    "metrics": {
+        "epoch": [
+            {
+                "type": "accuracy_epoch",
+                "args": {}
+            }
+        ],
+        "running": []
+    },
+    "trainer": {
+        "type": "BasicMultiTrainer",
+        "args": {},
+        "epochs": 1000,
+        "save_dir": "saved/",
+        "save_period": 10,
+        "val_period": 1,
+        "verbosity": 2,
+        "freeze": false,
+        "monitor": [
+            "max val_accuracy_epoch",
+            "min val_loss_epoch"
+        ],
+        "tensorboard": true,
+        "evaluation": true
+    }
+}
