@@ -1,5 +1,5 @@
 # MultiStainDeepLearning
-This is the GitHub Repository providing an example code base for **"The AImmunoscore – Multistain deep learning for prediction of prognosis and therapy response in colorectal cancer"** by Foersch et al. (and other projects using multiple input data). The underlying study is a proof of concept and has not been evaluated in a clinical context. The content of this repo (including the code, the example data, the repo license, etc.) may be subject to change in the future. For further questions feel free to inquire about this project to our group [here](mailto:sebastian.foersch@unimedizin-mainz.de?subject=[GitHub]Multi%20Stain%20Deep%20Learning).
+This is the GitHub Repository providing an example code base for "Multistain deep learning for prediction of prognosis and therapy response in colorectal cancer" and other projects using multiple (image) input data. These studies are proofs of concept and have not been evaluated in clinical trials. The content of this repo (including the code, the example data, the repo license, etc.) may be subject to change in the future. For further questions feel free to inquire about this project [here](mailto:sebastian.foersch@unimedizin-mainz.de?subject=[GitHub]Multi%20Stain%20Deep%20Learning). The link to our group's website can be found [here](https://www.unimedizin-mainz.de/pathologie/forschung/ag-digitale-pathologie-kuenstliche-intelligenz.html) (in German).
 
 ## Getting started
 
@@ -208,7 +208,10 @@ Dr. Sebastian Foersch
 Institute of Pathology  
 University Medical Center Mainz  
 Langenbeckstr. 1  
-55131 Mainz, Germany
+55131 Mainz, Germany   
+[Email](mailto:sebastian.foersch@unimedizin-mainz.de?subject=[GitHub]Multi%20Stain%20Deep%20Learning)  
+
+The authors do not assume guarantee, liability, or warranty. There is no claim to correctness. Although we are constantly trying to improve our approach, this repository is not actively monitored or maintained. For any questions, reports, etc. please contact our group.
 
 
 ## How to cite
