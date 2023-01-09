@@ -214,8 +214,8 @@ Langenbeckstr. 1
 The authors do not assume guarantee, liability, or warranty. There is no claim to correctness. Although we are constantly trying to improve our approach, this repository is not actively monitored or maintained. For any questions, reports, etc. please contact our group.
 
 
-## How to cite
-The reference on how to cite the paper will appear here after acceptance.
+## Citation
+Foersch, S., Glasner, C., Woerl, AC. et al. Multistain deep learning for prediction of prognosis and therapy response in colorectal cancer. Nat Med (2023). https://doi.org/10.1038/s41591-022-02134-1
 
 
 ## License
