@@ -447,9 +447,9 @@ class BasicMultiTrainer(BaseTrainer):
     def plot_ggradcam(self, attributions, offset, backprop_idx, preds, impacts, normalized_impacts, val_df, save_dir):
         num_imgs = attributions[0].shape[0]
         num_modalities = len(attributions)
-        nrows = num_modalities // self.img_per_col
-        ncols_outer = self.img_per_col
-        ncols_all = 2*self.img_per_col
+        nrows = min(self.img_per_col, num_modalities)
+        ncols_outer = num_modalities // nrows
+        ncols_all = 2*ncols_outer
         label_names = self.data_loader.labels
         label2idx = self.data_loader.class_dict
 
@@ -499,7 +499,7 @@ class BasicMultiTrainer(BaseTrainer):
                     fig_size=(self.img_size, self.img_size), plt_fig_axis=(fig, axes[row, col_offset+0])
                 )
 
-                img_path = val_df.iloc[df_idx][modality]
+                img_path = self.data_loader.data_root + val_df.iloc[df_idx][modality]
                 axes[row, col_offset+1].imshow(plt.imread(img_path))
                 axes[row, col_offset+1].set_axis_off()
 
