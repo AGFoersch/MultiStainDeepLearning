@@ -1,6 +1,22 @@
 # MultiStainDeepLearning
 This is the GitHub Repository providing an example code base for "Multistain deep learning for prediction of prognosis and therapy response in colorectal cancer" and other projects using multiple (image) input data. These studies are proofs of concept and have not been evaluated in clinical trials. The content of this repo (including the code, the example data, the repo license, etc.) may be subject to change in the future. For further questions feel free to inquire about this project [here](mailto:sebastian.foersch@unimedizin-mainz.de?subject=[GitHub]Multi%20Stain%20Deep%20Learning). The link to our group's website can be found [here](https://www.unimedizin-mainz.de/pathologie/forschung/ag-digitale-pathologie-kuenstliche-intelligenz.html) (in German).
 
+
+1. [Getting started](#getting-started)
+	1. [Dependencies](#dependencies)
+	1. [General usage](#general-usage)
+	1. [Try it with example data](#try-it-with-example-data)
+		1. [Unimodal training](#unimodal-training)
+		1. [Multimodal training](#multimodal-training)
+	1. [Use your own data](#use-your-own-data)
+		1. [Data description (.csv)](#data-description-csv)
+		1. [Configuration (.json)](#configuration-json)
+	1. [Guided Grad-CAMs](#guided-grad-cams)
+1. [Contact](#contact)
+1. [Citation](#citation)
+1. [License](#license)
+1. [Acknowledgements](#acknowledgements)
+
 ## Getting started
 
 ### Dependencies
@@ -202,6 +218,50 @@ The configuration .json files that describe model training and evaluation are st
 
 The above is an example of a multimodal configuration. Unimodal configurations are structured the same unless noted otherwise in the comments.
 
+
+### Guided Grad-CAMs
+You can create [Guided Grad-CAM](https://arxiv.org/abs/1610.02391) images to visualize areas that most affect classification. Each row in `dataframe_valid` will result in one image file containing a grid of the Guided Grad-CAMs along with a thumbnail of the images they're based on.
+To create these images,  add a `vis_options` entry under the `trainer` key of a multimodal config like so:
+```json
+{
+    // Other config keys, e.g. "name", "n_gpu", "arch", ... still go here.
+    // No need to change these, except for maybe reducing "batch_size" and
+    // modifiying "dataframe_valid".
+    // ...
+    "trainer": {
+        // Other trainer config keys, e.g. "type", "args", "epochs" ... still go here.
+        // No need to modify these.
+        // ...
+        "vis_options": {
+            "enabled": true,
+            "plot_info": true,
+            "img_size": 5,
+            "img_per_col": 2,
+            "guided_gradcam": {
+                "enabled": true,
+                "backprop_label": 1,
+                "include_impacts": true,
+                "colormap": "coolwarm"
+            }
+        }
+    }
+}
+```
+
+Guided Grad-CAM image creation will then run upon evaluation, so for example when running `test.py`. The images will be saved to `<save_location>/evaluation/guided_gradcams`, where `<save_location>` denotes the time-stamped result folder. Keep in mind that creating the images via `test.py` will create a new time-stamped folder.
+
+Options for the entries under `vis_options`:
+* `enabled`: true to enable image creation, else false
+* `plot_info`: true to include additional information (file names, labels, predicted probabilities, ...) in the created images, false to hide
+* `img_size`: size of each Grad-CAM image in inches
+* `img_per_col`: Images are rendered into a grid, this value denotes how many rows this grid will have at most.
+* `guided_gradcam` options:
+    * `enabled`: true to enable Guided Grad-CAM creation, else false
+    * `backprop_label`: Perform backpropagation with regard to this label. Marked areas in the final images should denote areas of interest for this label. Check `<save_location>/evaluation/class_mapping.json` to figure out which number to use for which of your labels.
+    * `include_impacts`: true to include impact scores in the final images, else false
+    * `colormap`: Any matplotlib colormap or any of the colormaps defined in `utils/colormaps.json`. Defaults to "coolwarm". The paper figures use "zissou1".
+
+To avoid running out of GPU memory, you may have to roughly half the batch size compared to training. Grad-CAM image creation is fairly time-consuming, so you may want to only do so for specific images, which you can do by modifying the .csv-file pointed to by the `dataframe_valid` key. For these reasons, we recommend modifying the config file at `<save_location>/config.json` and then creating the images via `python test.py -r <save_location>/models/your_checkpoint.pth`.
 
 ## Contact
 Dr. Sebastian Foersch  
